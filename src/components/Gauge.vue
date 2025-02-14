@@ -256,7 +256,6 @@ const minorTicks = computed(() =>
         }))
 );
 const tickLabels = computed(() => {
-  const c = props.cfg.ticks.label;
   return multiplesInRange(props.cfg.scale.startValue, props.cfg.scale.endValue, props.cfg.ticks.label.resolution)
       .map(value => ({
         value,
