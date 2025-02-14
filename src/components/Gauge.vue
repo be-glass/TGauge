@@ -64,14 +64,26 @@
         <!--        value label-->
         <text
             x="0"
-            :y="props.cfg.valueLabel.radius"
+            :y="props.cfg.label.value.radius"
             text-anchor="middle"
             dominant-baseline="middle"
-            :color="props.cfg.valueLabel.color"
-            :font-size="props.cfg.valueLabel.fontSize"
+            :color="props.cfg.label.value.color"
+            :font-size="props.cfg.label.value.fontSize"
         >
-          {{ props.values.a.toFixed(1) }} {{ props.cfg.valueLabel.unit }}
+          {{ props.values.a.toFixed(1) }}
         </text>
+
+      <!--        unit label-->
+      <text
+          x="0"
+          :y="props.cfg.label.unit.radius"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          :color="props.cfg.label.unit.color"
+          :font-size="props.cfg.label.unit.fontSize"
+      >
+        {{ props.cfg.label.unit.text }}
+      </text>
       </g>
 
       <!-- Pointer -->
@@ -110,7 +122,7 @@
 </template>
 
 <script setup lang="ts">
-import defaultConfig from "@/config.js";
+import defaultConfig from "@/default.js";
 import {computed, defineProps} from "vue";
 
 // ✅ Define props correctly
@@ -179,7 +191,6 @@ const backArc = computed(() => {
   };
 });
 
-console.log(backArc.value.x1, backArc.value.y1, backArc.value.x2, backArc.value.y2, backArc.value.sweep)
 
 
 const trendArc = computed(() => {
@@ -190,7 +201,6 @@ const trendArc = computed(() => {
   const endRad = deg2rad(endAngle);
   const r = props.cfg.trendArc.radius;
 
-  // console.log(startAngle - endAngle, angleObject.value.a, angleObject.value.c)
 
 
   return {

@@ -42,12 +42,19 @@ export const defaultConfig = {
             thickness: 3,
             color: "black",
         },
-        valueLabel: {
-            radius: 20,
-            fontSize: 15,
-            color: "black",
-            unit: "°C",
-            digits: 1,
+        label: {
+            value: {
+                radius:35,
+                fontSize: 15,
+                color: "black",
+                digits: 1,
+            },
+            unit: {
+                radius: 60,
+                fontSize: 15,
+                color: "black",
+                text: "°C",
+            }
         },
         scale: {
             startValue: 0,
