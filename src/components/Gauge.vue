@@ -7,13 +7,14 @@
         <circle cx="0" cy="0" :r="props.cfg.hub.radius" :fill="props.cfg.colorPointer"/>
 
 
-<!--        &lt;!&ndash; Background Arc&ndash;&gt;-->
-<!--        <path-->
-<!--            :d="`M ${backArc.x1} ${backArc.y1} A ${props.cfg.colorScale.radius} ${props.cfg.colorScale.radius} 0 ${colorArc.sweep} 1 ${backArc.x2} ${backArc.y2}`"-->
-<!--            :stroke="props.cfg.colorScale.colorBackground"-->
-<!--            :stroke-width="props.cfg.colorScale.thickness"-->
-<!--            fill="none"-->
-<!--        />-->
+        <!-- Background Arc-->
+        <path
+            :d="`M ${backArc.x1} ${backArc.y1} A ${props.cfg.colorScale.radius} ${props.cfg.colorScale.radius} 0 ${backArc.sweep} 1 ${backArc.x2} ${backArc.y2}`"
+            :stroke-width="props.cfg.colorScale.thickness"
+            :stroke="props.cfg.colorScale.colorBack"
+            fill="none"
+        />
+
 
         <!-- Color Scale Arc -->
         <path
@@ -178,9 +179,7 @@ const backArc = computed(() => {
   };
 });
 
-
-
-
+console.log(backArc.value.x1, backArc.value.y1, backArc.value.x2, backArc.value.y2, backArc.value.sweep)
 
 
 const trendArc = computed(() => {
@@ -190,6 +189,9 @@ const trendArc = computed(() => {
   const startRad = deg2rad(startAngle);
   const endRad = deg2rad(endAngle);
   const r = props.cfg.trendArc.radius;
+
+  // console.log(startAngle - endAngle, angleObject.value.a, angleObject.value.c)
+
 
   return {
     x1: r * Math.cos(startRad),

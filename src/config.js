@@ -7,7 +7,7 @@ export const defaultConfig = {
             radius: 50,
             thickness: 15,
             color: "green",
-            colorBack: "lightgrey"
+            colorBack: "#f4f4f4"
         },
         trendArc: {
             radius: 60,
