@@ -19,7 +19,7 @@
         <!-- Color Scale Arc -->
         <path
             :d="`M ${colorArc.x1} ${colorArc.y1} A ${props.cfg.colorScale.radius} ${props.cfg.colorScale.radius} 0 ${colorArc.sweep} 1 ${colorArc.x2} ${colorArc.y2}`"
-            :stroke="props.cfg.colorScale.color"
+            :stroke="colorArc.color"
             :stroke-width="props.cfg.colorScale.thickness"
             fill="none"
         />
@@ -144,7 +144,6 @@ const angleObject = computed(() => ({
   c: computeAngle(props.values.c),
 }));
 
-// ✅ Compute Color Arc Positions (Fixes radians conversion and adds x2, y2)
 const colorArc = computed(() => {
   const startAngle = props.cfg.scale.startAngle;
   const endAngle = angleObject.value.a;
@@ -159,6 +158,7 @@ const colorArc = computed(() => {
     x2: r * Math.cos(endRad),
     y2: r * Math.sin(endRad),
     sweep: endAngle - startAngle > 180 ? 1 : 0,
+    color: temp2color(props.values.a),
   };
 });
 
@@ -201,6 +201,8 @@ const trendArc = computed(() => {
     sweep: endAngle > startAngle ? 1 : 0,
     large: 0,
     color: endAngle > startAngle ? props.cfg.trendArc.colorUp : props.cfg.trendArc.colorDown,
+    // color: temp2color(props.values.c),
+
   };
 
 
@@ -294,6 +296,19 @@ const trianglePoints = computed(() => {
   const x3 = -side / 2, y3 = -props.cfg.setPointMark.radius - height.value; // Bottom left
   return `${x1},${y1} ${x2},${y2} ${x3},${y3}`;
 });
+
+
+
+const temp2color = (v, a = 1) => {
+  const v0 = 10, v1 = 30;
+  const rl = Math.min(1, Math.max(0, (v - v0) / (v1 - v0))); // Normalize & clamp value
+  return `hsla(${200 * (1 - rl)}, 80%, 50%, ${a})`;
+};
+
+
+
+
+
 
 </script>
 
