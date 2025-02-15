@@ -73,6 +73,19 @@
           {{ props.values.a.toFixed(1) }}
         </text>
 
+        <!--        control value label-->
+        <text
+            x="0"
+            :y="-props.cfg.label.controlValue.radius"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            :color="props.cfg.label.controlValue.color"
+            :font-size="props.cfg.label.controlValue.fontSize"
+        >
+          {{ props.values.d }} {{ props.cfg.label.controlValue.unit }}
+        </text>
+
+
       <!--        unit label-->
       <text
           x="0"
@@ -85,6 +98,9 @@
         {{ props.cfg.label.unit.text }}
       </text>
       </g>
+
+
+
 
       <!-- Pointer -->
       <g class="gauge-pointer" :transform="`rotate(${angleObject.a} 0 0)`">

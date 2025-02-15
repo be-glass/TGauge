@@ -54,7 +54,13 @@ export const defaultConfig = {
                 fontSize: 15,
                 color: "black",
                 text: "°C",
-            }
+            },
+            controlValue: {
+                radius: 30,
+                fontSize: 10,
+                color: "black",
+                unit: "%",
+            },
         },
         scale: {
             startValue: 0,

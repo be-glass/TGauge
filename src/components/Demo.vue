@@ -5,9 +5,10 @@ import Slider from "@/components/Slider.vue"; // Import the Slider component
 
 // Create a single reactive object to store all values
 const gaugeValues = reactive({
-  a: 30,
-  b: 50,
-  c: 70,
+  a: 5,
+  b: 15,
+  c: 25,
+  d: 35,
 });
 </script>
 
@@ -22,6 +23,7 @@ const gaugeValues = reactive({
       <Slider v-model="gaugeValues.a" />
       <Slider v-model="gaugeValues.b" />
       <Slider v-model="gaugeValues.c" />
+      <Slider v-model="gaugeValues.d" />
     </div>
   </main>
 </template>
