@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import Gauge from "@/components/Gauge.vue";
+import TGauge from "@/components/TGauge.vue";
 import Slider from "@/components/Slider.vue"; // Import the Slider component
 
 // Create a single reactive object to store all values
@@ -15,8 +15,8 @@ const gaugeValues = reactive({
 <template>
   <main>
     <div class="dashboard">
-      <!-- Pass the reactive object to the Gauge component -->
-      <Gauge :values="gaugeValues" />
+      <!-- Pass the reactive object to the TGauge component -->
+      <TGauge :values="gaugeValues" />
     </div>
     <div class="sliders">
       <!-- Bind the sliders directly to the object properties -->
