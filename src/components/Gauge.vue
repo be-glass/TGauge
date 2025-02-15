@@ -141,6 +141,8 @@
 import defaultConfig from "@/default.js";
 import {computed, defineProps} from "vue";
 
+
+
 // ✅ Define props correctly
 const props = defineProps({
   values: {
@@ -329,10 +331,6 @@ const temp2color = (v, a = 1) => {
   const rl = Math.min(1, Math.max(0, (v - v0) / (v1 - v0))); // Normalize & clamp value
   return `hsla(${200 * (1 - rl)}, 80%, 50%, ${a})`;
 };
-
-
-
-
 
 
 </script>
