@@ -138,7 +138,7 @@
 </template>
 
 <script setup lang="ts">
-import defaultConfig from "@/default.js";
+import defaultConfig from "../default.js";
 import {computed, defineProps} from "vue";
 
 
