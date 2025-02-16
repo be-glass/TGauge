@@ -341,6 +341,9 @@ const temp2color = (v, a = 1) => {
   color: #000000; /* Set text color */
 }
 
+svg {
+  background-color: transparent; /* Set the container background */
 
+}
 
 </style>
