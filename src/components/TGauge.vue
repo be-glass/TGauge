@@ -339,18 +339,8 @@ const temp2color = (v, a = 1) => {
 .gauge {
   background-color: #ffffff; /* Set the container background */
   color: #000000; /* Set text color */
-  width: 50%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-circle {
-  stroke: #555; /* Outline stroke color */
-}
 
-text {
-  fill: #333; /* Color of the text */
-}
+
 </style>
