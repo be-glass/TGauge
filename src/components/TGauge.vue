@@ -337,7 +337,7 @@ const temp2color = (v, a = 1) => {
 
 <style scoped>
 .gauge {
-  background-color: #ffffff; /* Set the container background */
+  background-color: transparent; /* Set the container background */
   color: #000000; /* Set text color */
 }
 
