@@ -4,60 +4,60 @@ export const defaultConfig = {
             radius: 5,
         },
         colorScale: {
-            radius: 50,
+            radius: 63,
             thickness: 15,
             color: "green",
             colorBack: "#f4f4f4"
         },
         trendArc: {
-            radius: 60,
+            radius: 73,
             thickness: 5,
             colorUp: "pink",
             colorDown: "lightblue",
         },
         ticks: {
             major: {
-                radius: 60,
+                radius: 73,
                 length: 10,
                 thickness: 1,
                 resolution: 10,
                 color: "black",
             },
             minor: {
-                radius: 64,
+                radius: 77,
                 length: 3,
                 thickness: .5,
                 resolution: 1,
                 color: "black",
             },
             label: {
-                radius: 79,
+                radius: 92,
                 fontSize: 15,
-                resolution: 10,
+                resolution: 20,
                 color: "black",
             },
         },
         pointer: {
-            length: 60,
+            length: 73,
             thickness: 3,
             color: "black",
         },
         label: {
             value: {
-                radius:35,
-                fontSize: 15,
+                radius:48,
+                fontSize: 30,
                 color: "black",
                 digits: 1,
             },
             unit: {
-                radius: 60,
+                radius: 73,
                 fontSize: 15,
                 color: "black",
                 text: "°C",
             },
             controlValue: {
-                radius: 30,
-                fontSize: 10,
+                radius: 35,
+                fontSize: 15,
                 color: "black",
                 unit: "%",
             },
@@ -69,7 +69,7 @@ export const defaultConfig = {
             endAngle: 120,
         },
         setPointMark: {
-            radius: 65,
+            radius: 78,
             color: "purple",
         }
     }

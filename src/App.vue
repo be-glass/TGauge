@@ -12,8 +12,8 @@ import Demo from "@/components/Demo.vue";
 
 <style scoped>
 main {
-  background-color: #000000; /* Set the container background */
-  color: #ffffff; /* Set text color */
+  background-color: #ffffff; /* Set the container background */
+  color: #000000; /* Set text color */
   width: 100vw;
   height: 100vh;
 
