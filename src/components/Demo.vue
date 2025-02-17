@@ -5,10 +5,14 @@ import Slider from "@/components/Slider.vue"; // Import the Slider component
 
 // Create a single reactive object to store all values
 const gaugeValues = reactive({
-  a: 5,
-  b: 15,
-  c: 25,
-  d: 35,
+  a: -1,
+  b: -2,
+  c: -3,
+  d: -4,
+  // a: 5,
+  // b: 15,
+  // c: 25,
+  // d: 35,
   room: 123,
   name: "Guest",
   channel: "ABC",

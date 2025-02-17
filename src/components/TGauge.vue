@@ -2,65 +2,7 @@
   <div class="gauge">
     <svg width="100%" height="100%" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
 
-      <g class="gauge-fixed">
-        <!-- Hub -->
-        <circle cx="0" cy="0" :r="props.cfg.hub.radius" :fill="props.cfg.colorPointer"/>
-
-
-        <!-- Background Arc-->
-        <path
-            :d="`M ${backArc.x1} ${backArc.y1} A ${props.cfg.colorScale.radius} ${props.cfg.colorScale.radius} 0 ${backArc.sweep} 1 ${backArc.x2} ${backArc.y2}`"
-            :stroke-width="props.cfg.colorScale.thickness"
-            :stroke="props.cfg.colorScale.colorBack"
-            fill="none"
-        />
-
-
-        <!-- Color Scale Arc -->
-        <path
-            :d="`M ${colorArc.x1} ${colorArc.y1} A ${props.cfg.colorScale.radius} ${props.cfg.colorScale.radius} 0 ${colorArc.sweep} 1 ${colorArc.x2} ${colorArc.y2}`"
-            :stroke="colorArc.color"
-            :stroke-width="props.cfg.colorScale.thickness"
-            fill="none"
-        />
-
-        <!--        Trend Arc-->
-        <path
-            :d="`M ${trendArc.x1} ${trendArc.y1} A ${props.cfg.trendArc.radius} ${props.cfg.trendArc.radius} 0 ${trendArc.large} ${trendArc.sweep} ${trendArc.x2} ${trendArc.y2}`"
-            :stroke="trendArc.color"
-            :stroke-width="props.cfg.trendArc.thickness"
-            fill="none"
-        />
-
-
-        <!-- Major ticks -->
-        <line
-            v-for="(line, index) in majorTickLines"
-            :key="index" :x1="line.x1" :y1="line.y1" :x2="line.x2" :y2="line.y2"
-            :stroke="props.cfg.ticks.major.color"
-            :stroke-width="props.cfg.ticks.major.thickness"
-        />
-        <!-- Minor ticks -->
-        <line
-            v-for="(line, index) in minorTickLines"
-            :key="index" :x1="line.x1" :y1="line.y1" :x2="line.x2" :y2="line.y2"
-            :stroke="props.cfg.ticks.minor.color"
-            :stroke-width="props.cfg.ticks.minor.thickness"
-        />
-
-        <!--        tick labels-->
-        <text
-            v-for="(label, index) in tickLabelTexts"
-            :key="index" :x="label.x" :y="label.y"
-            text-anchor="middle"
-            dominant-baseline="middle"
-
-            :font-size="props.cfg.ticks.label.fontSize"
-            :fill="props.cfg.ticks.label.color"
-        >
-          {{ label.text }}
-        </text>
-
+      <g class="gauge-text">
         <!--        value label-->
         <text
             x="0"
@@ -134,40 +76,89 @@
           {{ props.values.channel }}
         </text>
 
-
       </g>
 
+      <!--      show graphics only for valid data-->
+      <g v-if="props.values.a >= 0">
+        <g class="gauge-fixed">
+          <!-- Hub -->
+          <circle cx="0" cy="0" :r="props.cfg.hub.radius" :fill="props.cfg.colorPointer"/>
 
-      <!-- Pointer -->
-      <g class="gauge-pointer" :transform="`rotate(${angleObject.a} 0 0)`">
-        <line
-            x1="0"
-            y1="0"
-            x2="0"
-            :y2="-props.cfg.pointer.length"
-            :stroke="props.cfg.pointer.color"
-            :stroke-width="props.cfg.pointer.thickness"
-            stroke-linecap="round"
-        />
+
+          <!-- Background Arc-->
+          <path
+              :d="`M ${backArc.x1} ${backArc.y1} A ${props.cfg.colorScale.radius} ${props.cfg.colorScale.radius} 0 ${backArc.sweep} 1 ${backArc.x2} ${backArc.y2}`"
+              :stroke-width="props.cfg.colorScale.thickness"
+              :stroke="props.cfg.colorScale.colorBack"
+              fill="none"
+          />
+
+
+          <!-- Color Scale Arc -->
+          <path
+              :d="`M ${colorArc.x1} ${colorArc.y1} A ${props.cfg.colorScale.radius} ${props.cfg.colorScale.radius} 0 ${colorArc.sweep} 1 ${colorArc.x2} ${colorArc.y2}`"
+              :stroke="colorArc.color"
+              :stroke-width="props.cfg.colorScale.thickness"
+              fill="none"
+          />
+
+          <!--        Trend Arc-->
+          <path
+              :d="`M ${trendArc.x1} ${trendArc.y1} A ${props.cfg.trendArc.radius} ${props.cfg.trendArc.radius} 0 ${trendArc.large} ${trendArc.sweep} ${trendArc.x2} ${trendArc.y2}`"
+              :stroke="trendArc.color"
+              :stroke-width="props.cfg.trendArc.thickness"
+              fill="none"
+          />
+
+
+          <!-- Major ticks -->
+          <line
+              v-for="(line, index) in majorTickLines"
+              :key="index" :x1="line.x1" :y1="line.y1" :x2="line.x2" :y2="line.y2"
+              :stroke="props.cfg.ticks.major.color"
+              :stroke-width="props.cfg.ticks.major.thickness"
+          />
+          <!-- Minor ticks -->
+          <line
+              v-for="(line, index) in minorTickLines"
+              :key="index" :x1="line.x1" :y1="line.y1" :x2="line.x2" :y2="line.y2"
+              :stroke="props.cfg.ticks.minor.color"
+              :stroke-width="props.cfg.ticks.minor.thickness"
+          />
+
+          <!--        tick labels-->
+          <text
+              v-for="(label, index) in tickLabelTexts"
+              :key="index" :x="label.x" :y="label.y"
+              text-anchor="middle"
+              dominant-baseline="middle"
+
+              :font-size="props.cfg.ticks.label.fontSize"
+              :fill="props.cfg.ticks.label.color"
+          >
+            {{ label.text }}
+          </text>
+        </g>
+
+
+        <!-- Pointer -->
+        <g class="gauge-pointer" :transform="`rotate(${angleObject.a} 0 0)`">
+          <line
+              x1="0"
+              y1="0"
+              x2="0"
+              :y2="-props.cfg.pointer.length"
+              :stroke="props.cfg.pointer.color"
+              :stroke-width="props.cfg.pointer.thickness"
+              stroke-linecap="round"
+          />
+        </g>
+
+        <!--      Set Point Mark-->
+        <g class="gauge-setpoint" :transform="`rotate(${angleObject.b} 0 0)`">
+          <polygon :points="trianglePoints" :fill="`${props.cfg.setPointMark.color}`"/>
+        </g>
       </g>
-
-      <!--      Set Point Mark-->
-      <g class="gauge-setpoint" :transform="`rotate(${angleObject.b} 0 0)`">
-        <polygon :points="trianglePoints" :fill="`${props.cfg.setPointMark.color}`"/>
-      </g>
-
-      <!--      &lt;!&ndash; Dynamic Values Display &ndash;&gt;-->
-      <!--      <g class="gauge-values">-->
-      <!--        <text x="0" y="-40" text-anchor="middle" style="font-size: 16px;">-->
-      <!--          Value 1: {{ props.values.a }}-->
-      <!--        </text>-->
-      <!--        <text x="0" y="0" text-anchor="middle" style="font-size: 16px;">-->
-      <!--          Value 2: {{ props.values.b }}-->
-      <!--        </text>-->
-      <!--        <text x="0" y="40" text-anchor="middle" style="font-size: 16px;">-->
-      <!--          Value 3: {{ props.values.c }}-->
-      <!--        </text>-->
-      <!--      </g>-->
 
     </svg>
   </div>
