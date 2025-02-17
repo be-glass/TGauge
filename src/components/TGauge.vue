@@ -75,8 +75,8 @@
 
         <!--        control value label-->
         <text
-            x="0"
-            :y="-props.cfg.label.controlValue.radius"
+            :x="props.cfg.label.controlValue.xOffset"
+            :y="props.cfg.label.controlValue.radius"
             text-anchor="middle"
             dominant-baseline="middle"
             :color="props.cfg.label.controlValue.color"
@@ -86,20 +86,56 @@
         </text>
 
 
-      <!--        unit label-->
-      <text
-          x="0"
-          :y="props.cfg.label.unit.radius"
-          text-anchor="middle"
-          dominant-baseline="middle"
-          :color="props.cfg.label.unit.color"
-          :font-size="props.cfg.label.unit.fontSize"
-      >
-        {{ props.cfg.label.unit.text }}
-      </text>
+        <!--        unit label-->
+        <text
+            x="0"
+            :y="props.cfg.label.unit.radius"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            :color="props.cfg.label.unit.color"
+            :font-size="props.cfg.label.unit.fontSize"
+        >
+          {{ props.cfg.label.unit.text }}
+        </text>
+
+        <!--        Room-->
+        <text
+            :x="props.cfg.label.room.xOffset"
+            :y="props.cfg.label.room.radius"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            :color="props.cfg.label.room.color"
+            :font-size="props.cfg.label.room.fontSize"
+        >
+          {{ props.values.room }}
+        </text>
+
+        <!--        Name-->
+        <text
+            :x="props.cfg.label.name.xOffset"
+            :y="props.cfg.label.name.radius"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            :color="props.cfg.label.name.color"
+            :font-size="props.cfg.label.name.fontSize"
+        >
+          {{ props.values.name }}
+        </text>
+
+        <!--        Channel-->
+        <text
+            :x="props.cfg.label.channel.xOffset"
+            :y="props.cfg.label.channel.radius"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            :color="props.cfg.label.channel.color"
+            :font-size="props.cfg.label.channel.fontSize"
+        >
+          {{ props.values.channel }}
+        </text>
+
+
       </g>
-
-
 
 
       <!-- Pointer -->
@@ -140,7 +176,6 @@
 <script setup lang="ts">
 import defaultConfig from "../default.js";
 import {computed, defineProps} from "vue";
-
 
 
 // ✅ Define props correctly
@@ -210,7 +245,6 @@ const backArc = computed(() => {
 });
 
 
-
 const trendArc = computed(() => {
   const startAngle = angleObject.value.a;
   const endAngle = angleObject.value.c;
@@ -218,7 +252,6 @@ const trendArc = computed(() => {
   const startRad = deg2rad(startAngle);
   const endRad = deg2rad(endAngle);
   const r = props.cfg.trendArc.radius;
-
 
 
   return {
@@ -323,7 +356,6 @@ const trianglePoints = computed(() => {
   const x3 = -side / 2, y3 = -props.cfg.setPointMark.radius - height.value; // Bottom left
   return `${x1},${y1} ${x2},${y2} ${x3},${y3}`;
 });
-
 
 
 const temp2color = (v, a = 1) => {

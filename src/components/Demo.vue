@@ -9,6 +9,9 @@ const gaugeValues = reactive({
   b: 15,
   c: 25,
   d: 35,
+  room: 123,
+  name: "Guest",
+  channel: "ABC",
 });
 </script>
 

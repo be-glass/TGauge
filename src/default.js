@@ -56,10 +56,31 @@ export const defaultConfig = {
                 text: "°C",
             },
             controlValue: {
-                radius: 35,
+                radius: 70,
                 fontSize: 15,
                 color: "black",
                 unit: "%",
+                xOffset: 70,
+            },
+
+            name: {
+                radius: -90,
+                xOffset: -70,
+                fontSize: 15,
+                color: "black",
+            },
+            room: {
+                radius: -70,
+                xOffset: -70,
+                fontSize: 10,
+                color: "black",
+            },
+
+            channel: {
+                radius: -90,
+                fontSize: 10,
+                xOffset: 70,
+                color: "black",
             },
         },
         scale: {
